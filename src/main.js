@@ -34,7 +34,10 @@ function collectState() {
         rowsPerPage,
         page,
         totalFrom,
-        totalTo
+        totalTo,
+        searchByDate: rawState.date,
+        searchByCustomer: rawState.customer,
+        searchBySeller: rawState.seller
     };
 }
 
