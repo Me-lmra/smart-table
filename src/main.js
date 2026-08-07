@@ -26,15 +26,15 @@ function collectState() {
     const rowsPerPage = parseInt(state.rowsPerPage); // Сколько строк выводить (например: 10)
     const page = parseInt(state.page ?? 1);          // Какая страница открыта (по умолчанию 1)
 
-    const total_from = state.totalFrom;
-    const total_to = state.totalTo;
+    const totalFrom = state.totalFrom ? parseFloat(state.totalFrom) : state.totalFrom;
+    const totalTo = state.totalTo ? parseFloat(state.totalTo) : state.totalTo;
 
     return {
         ...state,
         rowsPerPage,
         page,
-        total_from,
-        total_to
+        totalFrom,
+        totalTo
     };
 }
 
