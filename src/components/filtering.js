@@ -23,6 +23,8 @@ export function initFiltering(elements, indexes) {
             if (input) {
                 input.value = ''; // Сбрасываем значение на экране
                 state[action.dataset.field] = '';
+                if (action.dataset.field === 'date') state.searchByDate = '';
+                if (action.dataset.field === 'customer') state.searchByCustomer = '';
             }
         }
         // @todo: #4.5 — отфильтровать данные используя компаратор
