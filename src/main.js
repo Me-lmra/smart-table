@@ -26,18 +26,15 @@ function collectState() {
     const rowsPerPage = parseInt(state.rowsPerPage); // Сколько строк выводить (например: 10)
     const page = parseInt(state.page ?? 1);          // Какая страница открыта (по умолчанию 1)
 
-    const totalFrom = state.totalFrom !== "" ? parseInt(state.totalFrom) : null;
-    const totalTo = state.totalTo !== "" ? parseInt(state.totalTo) : null;
-    // 3. Возвращаем обновленный объект состояния наружу
+    const totalFrom = state.totalFrom ? parseFloat(state.totalFrom) : state.totalFrom;
+    const totalTo = state.totalTo ? parseFloat(state.totalTo) : state.totalTo;
+
     return {
         ...state,
         rowsPerPage,
         page,
         totalFrom,
-        totalTo,
-        searchByDate: rawState.date,
-        searchByCustomer: rawState.customer,
-        searchBySeller: rawState.seller
+        totalTo
     };
 }
 

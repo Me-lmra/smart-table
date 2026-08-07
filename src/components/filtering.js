@@ -22,9 +22,7 @@ export function initFiltering(elements, indexes) {
             const input = parent.querySelector('input'); // Ищем инпут рядом
             if (input) {
                 input.value = ''; // Сбрасываем значение на экране
-                state[action.dataset.field] = null; // Обнуляем поле в состоянии по его data-field
-                if (action.dataset.field === 'date') state.searchByDate = null;
-                if (action.dataset.field === 'customer') state.searchByCustomer = null;
+                state[action.dataset.field] = '';
             }
         }
         // @todo: #4.5 — отфильтровать данные используя компаратор
