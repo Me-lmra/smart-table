@@ -25,8 +25,9 @@ function collectState() {
     const state = processFormData(new FormData(sampleTable.container));
     const rowsPerPage = parseInt(state.rowsPerPage); // Сколько строк выводить (например: 10)
     const page = parseInt(state.page ?? 1);          // Какая страница открыта (по умолчанию 1)
-    const totalFrom = state.totalFrom ? +state.totalFrom : '';
-    const totalTo = state.totalTo ? +state.totalTo : '';
+
+    const totalFrom = state.totalFrom !== "" ? parseInt(state.totalFrom) : null;
+    const totalTo = state.totalTo !== "" ? parseInt(state.totalTo) : null;
     // 3. Возвращаем обновленный объект состояния наружу
     return {
         ...state,
