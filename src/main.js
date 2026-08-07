@@ -23,19 +23,24 @@ const {data, ...indexes} = initData(sourceData);
  */
 function collectState() {
     const state = processFormData(new FormData(sampleTable.container));
-    const rowsPerPage = parseInt(state.rowsPerPage); // Сколько строк выводить (например: 10)
-    const page = parseInt(state.page ?? 1);          // Какая страница открыта (по умолчанию 1)
+    state.rowsPerPage = parseInt(state.rowsPerPage);
+    state.page = parseInt(state.page ?? 1);
 
-    const totalFrom = state.totalFrom ? parseFloat(state.totalFrom) : state.totalFrom;
-    const totalTo = state.totalTo ? parseFloat(state.totalTo) : state.totalTo;
+    // Обрабатываем totalFrom: если есть текст, делаем parseFloat. Если пусто — УДАЛЯЕМ
+    if (state.totalFrom && state.totalFrom.trim() !== "") {
+        state.totalFrom = parseFloat(state.totalFrom);
+    } else {
+        delete state.totalFrom;
+    }
 
-    return {
-        ...state,
-        rowsPerPage,
-        page,
-        totalFrom,
-        totalTo
-    };
+    // Обрабатываем totalTo: если есть текст, делаем parseFloat. Если пусто — УДАЛЯЕМ
+    if (state.totalTo && state.totalTo.trim() !== "") {
+        state.totalTo = parseFloat(state.totalTo);
+    } else {
+        delete state.totalTo;
+    }
+
+    return state;
 }
 
 /**
