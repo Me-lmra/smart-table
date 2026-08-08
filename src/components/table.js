@@ -26,7 +26,7 @@ export function initTable(settings, onAction) {
         onAction();
     });
     root.container.addEventListener('reset', () => { // когда пользователь нажимает кнопку «Сбросить фильтры»
-        setTimeout(onAction);
+        setTimeout(() => onAction(), 0);
     });
     root.container.addEventListener('submit', (e) => { // когда пользователь нажимает на кнопки страниц или сортировку
         e.preventDefault();
