@@ -1,4 +1,4 @@
-import {getPages} from "../lib/utils.js";
+import { getPages } from "../lib/utils.js";
 
 export const initPagination = ({pages, fromRow, toRow, totalRows}, createPage) => {
     // @todo: #2.3 — подготовить шаблон кнопки для страницы и очистить контейнер

@@ -7,11 +7,12 @@ export function initFiltering(elements, indexes) {
     // @todo: #4.1 — заполнить выпадающие списки опциями
     Object.keys(indexes).forEach((elementName) => {
         elements[elementName].append(
-            ...Object.values(indexes[elementName]).map(name => {
-                const option = document.createElement('option');
-                option.value = name;
-                option.textContent = name;
-                return option;
+            ...Object.values(indexes[elementName])
+                    .map(name => {
+                        const option = document.createElement('option');
+                        option.value = String(name);
+                        option.textContent = String(name);
+                        return option;
             })
         );
     });

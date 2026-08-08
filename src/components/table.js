@@ -12,14 +12,20 @@ export function initTable(settings, onAction) {
     const root = cloneTemplate(tableTemplate);
 
     // @todo: #1.2 —  вывести дополнительные шаблоны до и после таблицы
-    after.forEach(subName => {
-        root[subName] = cloneTemplate(subName);
-        root.container.append(root[subName].container);
-    });
-    before.reverse().forEach(subName => {
-        root[subName] = cloneTemplate(subName);
-        root.container.prepend(root[subName].container);
-    });
+    if (before && before.length > 0) {
+        [...before].reverse().forEach(subName => {
+            root[subName] = cloneTemplate(subName);
+            root.container.prepend(root[subName].container);
+        });
+    }
+
+    // Шаблоны после таблицы
+    if (after && after.length > 0) {
+        after.forEach(subName => {
+            root[subName] = cloneTemplate(subName);
+            root.container.append(root[subName].container);
+        });
+    }
 
     // @todo: #1.3 —  обработать события и вызвать onAction()
     root.container.addEventListener('change', () => { // когда пользователь выбирает что-то в фильтрах
