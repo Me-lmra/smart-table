@@ -23,24 +23,14 @@ const {data, ...indexes} = initData(sourceData);
  */
 function collectState() {
     const state = processFormData(new FormData(sampleTable.container));
-    const rowsPerPage = parseInt(state.rowsPerPage);
-    const page = parseInt(state.page ?? 1);
+    const rowsPerPage = parseInt(state.rowsPerPage);    // приведём количество страниц к числу
+    const page = parseInt(state.page ?? 1);                // номер страницы по умолчанию 1 и тоже число
 
-    // 3. Сохраняем точные числа для диапазонов сумм
-    const totalFrom = state.totalFrom ? parseFloat(state.totalFrom) : state.totalFrom;
-    const totalTo = state.totalTo ? parseFloat(state.totalTo) : state.totalTo;
-
-    // 4. Возвращаем state, где имена четко соответствуют defaultRules Яндекса
-    return {
+    return {                                            // расширьте существующий return вот так
         ...state,
         rowsPerPage,
-        page,
-        totalFrom,
-        totalTo,
-        searchByDate: state.date || '',
-        searchByCustomer: state.customer || '',
-        searchBySeller: state.seller || ''
-    };
+        page
+    }
 }
 
 /**
