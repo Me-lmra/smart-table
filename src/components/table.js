@@ -43,7 +43,7 @@ export function initTable(settings, onAction) {
         const nextRows = data.map(item => {
             const row = cloneTemplate(rowTemplate);
             Object.keys(item).forEach(key => {
-                if (key in row.elements) {
+                if (row.elements[key]) {
                     row.elements[key].textContent = item[key];
                 }
             });
